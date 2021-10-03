@@ -3,6 +3,7 @@
 
 var cityNameInputForm = $('#input-city-name');
 var cityInfoEl = $('#city-card');
+var today = moment();
 
 // function init() {
 //     //localStorage.getItem()
@@ -30,18 +31,16 @@ function getCityWeather(city) {
         getForecast(response.coord.lat,response.coord.lon)
     });
 
-
 };
 
 function renderCityWeather(data) {
 
-    var today = moment().format("L");
     var currentCity = document.createElement('h2');
     var currentTemp = document.createElement('p');
     var currentWind = document.createElement('p');
     var currentHumidity = document.createElement('p');
 
-    currentCity.textContent = data.name + ' (' + today +') ';
+    currentCity.textContent = data.name + ' (' + today.format("L") +') ';
     currentTemp.textContent = 'Temp: ' + data.main.temp +'°F';
     currentWind.textContent = 'Wind: ' + data.wind.speed + 'MPH';
     currentHumidity.textContent = 'Humidity: ' + data.main.humidity;
@@ -62,22 +61,39 @@ function getForecast(lat,lon) {
         url: forecastUrl,
         method: 'GET',
     }).then(function (response) {
-        console.log(response);
         renderForecast(response);
     });
     
 };
 
 function renderForecast(data) {
+    console.log(data);
     var currentUVIndex = document.createElement('p');
     currentUVIndex.textContent = 'UV Index: ' + data.current.uvi;
     cityInfoEl.append(currentUVIndex);
+    
+    $('#5-day-forecast').text('5-Day-Forecast');
 
-    // var day1
-    // var day2
-    // var day3
-    // var day4
-    // var day5
+    for (var i=1; i<6; i++) {
+        var futureDate = document.createElement('h6')
+        var icon = document.createElement('img')
+        var iconCode = data.daily[i].weather[0].icon;
+        var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+        icon.setAttribute('src',iconUrl)
+        // var futureTemp = 
+        // var futureWind = 
+        // var futureHumidity = 
+        data.daily[i].temp.day;
+        data.daily[i].wind_speed;
+        data.daily[i].humidity;
+
+        futureDate.textContent = today.add(1, 'days').format('L');
+        
+        $('#day-'+i).append(futureDate);
+        $('#day-'+i).append(icon);
+
+        
+    };
 };
 
 $('#search-form-btn').on('click', handleSubmitFormSearch)
