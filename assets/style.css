@@ -1,0 +1,21 @@
+
+
+header {
+    text-align: center;
+    padding: 10px 0px;
+    background:linear-gradient(to right, blue, midnightblue);
+    color: mintcream;
+    
+}
+
+.w-100 {
+    margin: 8px 0px;
+}
+
+.btn {
+    border-radius: 5px !important;
+}
+
+.current-city {
+    border: 1px solid black;
+}
