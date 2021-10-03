@@ -43,7 +43,7 @@ function renderCityWeather(data) {
     currentCity.textContent = data.name + ' (' + today.format("L") +') ';
     currentTemp.textContent = 'Temp: ' + data.main.temp +'°F';
     currentWind.textContent = 'Wind: ' + data.wind.speed + 'MPH';
-    currentHumidity.textContent = 'Humidity: ' + data.main.humidity;
+    currentHumidity.textContent = 'Humidity: ' + data.main.humidity + '%';
 
     cityInfoEl.append(currentCity);
     cityInfoEl.append(currentTemp);
@@ -77,21 +77,24 @@ function renderForecast(data) {
     for (var i=1; i<6; i++) {
         var futureDate = document.createElement('h6')
         var icon = document.createElement('img')
+        var futureTemp = document.createElement('p');
+        var futureWind = document.createElement('p');
+        var futureHumidity = document.createElement('p');        
         var iconCode = data.daily[i].weather[0].icon;
         var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
         icon.setAttribute('src',iconUrl)
-        // var futureTemp = 
-        // var futureWind = 
-        // var futureHumidity = 
-        data.daily[i].temp.day;
-        data.daily[i].wind_speed;
-        data.daily[i].humidity;
 
+        
         futureDate.textContent = today.add(1, 'days').format('L');
+        futureTemp.textContent = 'Temp: ' +  data.daily[i].temp.day +'°F';
+        futureWind.textContent =  'Wind: ' + data.daily[i].wind_speed + 'MPH';
+        futureHumidity.textContent = 'Humidity: ' + data.daily[i].humidity + '%';
         
         $('#day-'+i).append(futureDate);
         $('#day-'+i).append(icon);
-
+        $('#day-'+i).append(futureTemp);
+        $('#day-'+i).append(futureWind);
+        $('#day-'+i).append(futureHumidity);
         
     };
 };
