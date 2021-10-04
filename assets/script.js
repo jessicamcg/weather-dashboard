@@ -18,8 +18,8 @@ var today = moment();
 var savedCities;
 
 function init() {
-    savedCities = [];
-    // get saved cities in local storage
+    savedCities = JSON.parse(localStorage.getItem('savedCities')) || [];
+    renderSearchHistoryBtn();
 };
 
 function handleSubmitFormSearch(event) {
@@ -127,11 +127,12 @@ function renderForecast(data) {
 function saveSearch(city) {
 
     if (savedCities.includes(city)) {
+        renderSearchHistoryBtn();
         return;
     };
 
     savedCities.push(city)
-    localStorage.setItem('savedCities',JSON.stringify(city));
+    localStorage.setItem('savedCities',JSON.stringify(savedCities));
     renderSearchHistoryBtn();
 };
 
@@ -147,6 +148,7 @@ function renderSearchHistoryBtn() {
     if (savedCities.length>4){
         savedCities.shift();
     };
+    
 };
 
 init();
