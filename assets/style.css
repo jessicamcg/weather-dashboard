@@ -1,11 +1,9 @@
 
-
 header {
     text-align: center;
     padding: 10px 0px;
     background:linear-gradient(to right, blue, midnightblue);
     color: mintcream;
-    
 }
 
 .w-100 {
@@ -27,4 +25,5 @@ section div {
     background-color: rgb(54, 54, 99);
     color: white;
     margin-right: 20px;
+    margin-bottom: 20px;
 }

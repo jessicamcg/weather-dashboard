@@ -1,6 +1,4 @@
 
-    // 4ff77886755c8b9237b9bb4bb1c1e2bf
-
 var cityNameInputForm = $('#input-city-name');
 var cityInfoEl = $('#city-card');
 
@@ -14,7 +12,6 @@ var icon = document.createElement('img')
 var futureTemp = document.createElement('p');
 var futureWind = document.createElement('p');
 var futureHumidity = document.createElement('p');
-var savedBtnDiv = $('')
 var savedBtns  = document.createElement('button');    
 
 var today = moment();
@@ -22,6 +19,7 @@ var savedCities;
 
 function init() {
     savedCities = [];
+    // get saved cities in local storage
 };
 
 function handleSubmitFormSearch(event) {
@@ -62,11 +60,6 @@ function getCityWeather(city) {
 function renderCityWeather(data) {
     today = moment();
 
-    currentCity.textContent = '';
-    currentTemp.textContent = '';
-    currentWind.textContent = '';
-    currentHumidity.textContent = '';
-
     currentCity.textContent = data.name + ' (' + today.format("L") +') ';
     currentTemp.textContent = 'Temp: ' + data.main.temp +'°F';
     currentWind.textContent = 'Wind: ' + data.wind.speed + 'MPH';
@@ -101,10 +94,6 @@ function renderForecast(data) {
     
     $('#5-day-forecast').text('5-Day-Forecast');
     for (var i=1; i<6; i++) {
-        futureDate.textContent = '';
-        futureTemp.textContent =  '';
-        futureWind.textContent = '';
-        futureHumidity.textContent = '';
         $('#day-'+i).empty();
     };
     
