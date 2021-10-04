@@ -18,7 +18,7 @@ header {
 
 .current-city {
     border: 1px solid black;
-    width: 1005px;
+    width: 800px;
     margin: 15px 5px;
     padding: 20px;
 }
@@ -26,5 +26,5 @@ header {
 section div {
     background-color: rgb(54, 54, 99);
     color: white;
-    margin-right: 40px;
+    margin-right: 20px;
 }

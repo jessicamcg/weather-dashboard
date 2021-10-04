@@ -130,9 +130,7 @@ function renderForecast(data) {
         $('#day-'+j).append(futureWind);
         $('#day-'+j).append(futureHumidity);
         $('#day-'+j).addClass('p-3');
-        $('#day-'+j).attr('style','height:300px');
-        $('#day-'+j).attr('style','width:165px');
-        
+        $('#day-'+j).css({'min-height':'320px', 'width':'140px'});
     };
 
 };
