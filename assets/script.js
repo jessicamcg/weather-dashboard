@@ -14,15 +14,14 @@ var icon = document.createElement('img')
 var futureTemp = document.createElement('p');
 var futureWind = document.createElement('p');
 var futureHumidity = document.createElement('p');
-var savedBtns;    
+var savedBtnDiv = $('')
+var savedBtns  = document.createElement('button');    
 
 var today = moment();
 var savedCities;
 
 function init() {
-    // savedCities = JSON.parse(localStorage.getItem('savedCities')) || [];
     savedCities = [];
-    console.log(savedCities);
 };
 
 function handleSubmitFormSearch(event) {
@@ -33,7 +32,13 @@ function handleSubmitFormSearch(event) {
         getCityWeather(cityName);
     } else {
         alert('Please enter a city name')
-    }
+    };
+    cityNameInputForm.val('');
+};
+
+function handleSavedBtn(event) {
+    cityName = event.target.textContent;
+    getCityWeather(cityName);
 };
 
 function getCityWeather(city) {
@@ -50,7 +55,8 @@ function getCityWeather(city) {
 };
 
 function renderCityWeather(data) {
-    
+    today = moment();
+
     currentCity.textContent = '';
     currentTemp.textContent = '';
     currentWind.textContent = '';
@@ -124,29 +130,31 @@ function renderForecast(data) {
 };
 
 function saveSearch(city) {
-    // city = [city];
+
+    if (savedCities.includes(city)) {
+        return;
+    };
+
     savedCities.push(city)
     localStorage.setItem('savedCities',JSON.stringify(city));
     renderSearchHistoryBtn();
 };
 
 function renderSearchHistoryBtn() {
-    // make buttons using city names saved in local storage
     
-    console.log(typeof savedCities);
-    console.log(savedCities);
-    console.log(savedCities.length);
-    $('aside').children().remove('button');
+    $('#saved-btn-div').children().remove('button');
     for (var k=0; k<savedCities.length;k++) {
-        savedBtns = document.createElement('button')
-        savedBtns.setAttribute('class', 'btn btn-secondary w-100');
+        savedBtns = document.createElement('button');
+        savedBtns.setAttribute('class', 'saved-btn btn btn-secondary w-100');
         savedBtns.textContent = savedCities[k];
-        console.log(savedCities[k]);
-        $('aside').append(savedBtns);
+        $('#saved-btn-div').append(savedBtns);
+    };
+    if (savedCities.length>4){
+        savedCities.shift();
     };
 };
 
-$('#search-form-btn').on('click', handleSubmitFormSearch)
-//make event listener for search history buttons
-
 init();
+
+$('#search-form-btn').on('click', handleSubmitFormSearch);
+$('#saved-btn-div').on('click',handleSavedBtn);
