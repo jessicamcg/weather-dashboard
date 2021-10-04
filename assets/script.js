@@ -47,10 +47,15 @@ function getCityWeather(city) {
     $.ajax({
         url: currentUrl,
         method: 'GET',
+        statusCode: {
+            404: function() {
+              alert( "City name not found. Please enter a valid city." );
+            }
+          }
     }).then(function (response) {
         renderCityWeather(response);
-        getForecast(response.coord.lat,response.coord.lon)
-    });
+        getForecast(response.coord.lat,response.coord.lon);
+    }).catch()
 
 };
 
