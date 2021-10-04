@@ -129,6 +129,9 @@ function renderForecast(data) {
         $('#day-'+j).append(futureTemp);
         $('#day-'+j).append(futureWind);
         $('#day-'+j).append(futureHumidity);
+        $('#day-'+j).addClass('p-3');
+        $('#day-'+j).attr('style','height:300px');
+        $('#day-'+j).attr('style','width:165px');
         
     };
 
