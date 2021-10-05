@@ -60,13 +60,24 @@ function getCityWeather(city) {
 
 function renderCityWeather(data) {
     today = moment();
+    console.log(data);
+
+    if (document.querySelector('img')) {
+        document.querySelector('img').remove();
+    };
 
     currentCity.textContent = data.name + ' (' + today.format("L") +') ';
     currentTemp.textContent = 'Temp: ' + data.main.temp +'°F';
     currentWind.textContent = 'Wind: ' + data.wind.speed + 'MPH';
     currentHumidity.textContent = 'Humidity: ' + data.main.humidity + '%';
 
+
+    var iconCode = data.weather[0].icon;
+    var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+    icon.setAttribute('src',iconUrl)
+
     cityInfoEl.append(currentCity);
+    currentCity.append(icon);
     cityInfoEl.append(currentTemp);
     cityInfoEl.append(currentWind);
     cityInfoEl.append(currentHumidity);
