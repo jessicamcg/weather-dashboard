@@ -10,9 +10,9 @@ The UV index is presented with a backbround color that indicates whether the con
 
 The 5-day foecast displays the sate, an icon representation of weather conditions, the temperature, the wind speed, and the humidity.
 
-When the user clicks the previous city's search buttons, the page is loaded with that city again.
+When the user clicks the previous city's search buttons, the page is loaded with that city's statistics again.
 
-![Search example]() 
+![Search example](https://github.com/jessicamcg/weather-dashboard/blob/main/assets/examplecityforecast.png) 
 
 ## Live Link
 https://jessicamcg.github.io/weather-dashboard/
