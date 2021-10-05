@@ -12,7 +12,7 @@ The 5-day foecast displays the sate, an icon representation of weather condition
 
 When the user clicks the previous city's search buttons, the page is loaded with that city again.
 
-![Search example]()
+![Search example]() 
 
 ## Live Link
 https://jessicamcg.github.io/weather-dashboard/

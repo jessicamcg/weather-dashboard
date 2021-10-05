@@ -27,3 +27,21 @@ section div {
     margin-right: 20px;
     margin-bottom: 20px;
 }
+
+.low {
+    background-color: chartreuse;
+    padding: 0px 3px;
+    border-radius: 3px;
+}
+
+.moderate {
+    background-color: yellow;
+    padding: 0px 3px;
+    border-radius: 3px;
+}
+
+.high {
+    background-color: red;
+    padding: 0px 3px;
+    border-radius: 3px;
+}

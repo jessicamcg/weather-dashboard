@@ -6,7 +6,8 @@ var currentCity = document.createElement('h2');
 var currentTemp = document.createElement('p');
 var currentWind = document.createElement('p');
 var currentHumidity = document.createElement('p');
-var currentUVIndex = document.createElement('p');
+var currentUVIndexP = document.createElement('p')
+var currentUVIndex = document.createElement('span');
 var futureDate = document.createElement('h6')
 var icon = document.createElement('img')
 var futureTemp = document.createElement('p');
@@ -88,9 +89,19 @@ function getForecast(lat,lon) {
 };
 
 function renderForecast(data) {
-    currentUVIndex.textContent = '';
-    currentUVIndex.textContent = 'UV Index: ' + data.current.uvi;
-    cityInfoEl.append(currentUVIndex);
+    currentUVIndexP.textContent = '';
+    currentUVIndex.textContent = data.current.uvi;
+    currentUVIndexP.textContent = 'UV Index: ';
+    if (data.current.uvi <=2) {
+        currentUVIndex.classList.add('low');
+    } else if (data.current.uvi >=6) {
+        currentUVIndex.classList.add('high');
+    } else {
+        currentUVIndex.classList.add('moderate')
+    };
+
+    currentUVIndexP.append(currentUVIndex);
+    cityInfoEl.append(currentUVIndexP);
     
     $('#5-day-forecast').text('5-Day-Forecast');
     for (var i=1; i<6; i++) {
