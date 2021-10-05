@@ -60,7 +60,6 @@ function getCityWeather(city) {
 
 function renderCityWeather(data) {
     today = moment();
-    console.log(data);
 
     if (document.querySelector('img')) {
         document.querySelector('img').remove();
